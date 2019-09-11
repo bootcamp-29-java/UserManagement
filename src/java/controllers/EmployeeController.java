@@ -5,8 +5,10 @@
  */
 package controllers;
 
+import daos.EmployeeDAO;
 import daos.GeneralDAO;
 import icontrollers.IEmployeeController;
+import idaos.IEmployeeDAO;
 import idaos.IGeneralDAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,12 +24,14 @@ import org.hibernate.SessionFactory;
 public class EmployeeController implements IEmployeeController {
     
     private IGeneralDAO<Employee> igdao;
+    private IEmployeeDAO empdao;
 
     SessionFactory factory;
     Session session;
     
     public EmployeeController(SessionFactory factory) {
         igdao = new GeneralDAO<>(factory, Employee.class);
+        empdao = new EmployeeDAO(factory);
     }
 
     @Override
@@ -71,6 +75,13 @@ public class EmployeeController implements IEmployeeController {
         } catch (Exception e) {
             result = "Delete data error";
         }
+        return result;
+    }
+
+    @Override
+    public int genId() {
+        int result = Integer.parseInt(empdao.genId()) ;
+        
         return result;
     }
 
