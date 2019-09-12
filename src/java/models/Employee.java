@@ -14,6 +14,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,6 +36,33 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")})
 public class Employee implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<WorkAssignment> workAssignmentList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Award> awardList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<EmployeeLanguage> employeeLanguageList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Organization> organizationList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Project> projectList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<EmployeeSkill> employeeSkillList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Experience> experienceList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Certification> certificationList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Training> trainingList;
+    @JoinColumn(name = "religion", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Religion religion;
+    @JoinColumn(name = "marital", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Marital marital;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<EducationHistory> educationHistoryList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -211,6 +240,112 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "models.Employee[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<WorkAssignment> getWorkAssignmentList() {
+        return workAssignmentList;
+    }
+
+    public void setWorkAssignmentList(List<WorkAssignment> workAssignmentList) {
+        this.workAssignmentList = workAssignmentList;
+    }
+
+    @XmlTransient
+    public List<Award> getAwardList() {
+        return awardList;
+    }
+
+    public void setAwardList(List<Award> awardList) {
+        this.awardList = awardList;
+    }
+
+    @XmlTransient
+    public List<EmployeeLanguage> getEmployeeLanguageList() {
+        return employeeLanguageList;
+    }
+
+    public void setEmployeeLanguageList(List<EmployeeLanguage> employeeLanguageList) {
+        this.employeeLanguageList = employeeLanguageList;
+    }
+
+    @XmlTransient
+    public List<Organization> getOrganizationList() {
+        return organizationList;
+    }
+
+    public void setOrganizationList(List<Organization> organizationList) {
+        this.organizationList = organizationList;
+    }
+
+    @XmlTransient
+    public List<Project> getProjectList() {
+        return projectList;
+    }
+
+    public void setProjectList(List<Project> projectList) {
+        this.projectList = projectList;
+    }
+
+    @XmlTransient
+    public List<EmployeeSkill> getEmployeeSkillList() {
+        return employeeSkillList;
+    }
+
+    public void setEmployeeSkillList(List<EmployeeSkill> employeeSkillList) {
+        this.employeeSkillList = employeeSkillList;
+    }
+
+    @XmlTransient
+    public List<Experience> getExperienceList() {
+        return experienceList;
+    }
+
+    public void setExperienceList(List<Experience> experienceList) {
+        this.experienceList = experienceList;
+    }
+
+    @XmlTransient
+    public List<Certification> getCertificationList() {
+        return certificationList;
+    }
+
+    public void setCertificationList(List<Certification> certificationList) {
+        this.certificationList = certificationList;
+    }
+
+    @XmlTransient
+    public List<Training> getTrainingList() {
+        return trainingList;
+    }
+
+    public void setTrainingList(List<Training> trainingList) {
+        this.trainingList = trainingList;
+    }
+
+    public Religion getReligion() {
+        return religion;
+    }
+
+    public void setReligion(Religion religion) {
+        this.religion = religion;
+    }
+
+    public Marital getMarital() {
+        return marital;
+    }
+
+    public void setMarital(Marital marital) {
+        this.marital = marital;
+    }
+
+    @XmlTransient
+    public List<EducationHistory> getEducationHistoryList() {
+        return educationHistoryList;
+    }
+
+    public void setEducationHistoryList(List<EducationHistory> educationHistoryList) {
+        this.educationHistoryList = educationHistoryList;
     }
     
 }

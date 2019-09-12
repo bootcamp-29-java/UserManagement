@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import models.Account;
+import models.Education;
 import models.Employee;
 import models.EmployeeRole;
 import models.Role;
@@ -35,15 +36,16 @@ import org.hibernate.SessionFactory;
  */
 public class Testing {
     
-    public static void show() {
-        GeneralDAO<Employee> gdao = new GeneralDAO<>(HibernateUtil.getSessionFactory(), Employee.class);
-        for (Employee employee : gdao.getAll()) {
-            System.out.println(employee.getId() + " - " + employee.getFirstName());
-        }
-    }
+//    public static void show() {
+//        GeneralDAO<Employee> gdao = new GeneralDAO<>(HibernateUtil.getSessionFactory(), Employee.class);
+//        for (Employee employee : gdao.getAll()) {
+//            System.out.println(employee.getId() + " - " + employee.getFirstName());
+//        }
+//    }
     
     public static void main(String[] args) throws ParseException, FileNotFoundException {
         SessionFactory factory = HibernateUtil.getSessionFactory();
+//        System.out.println(factory);
 //        LoginRegisterDAO dao = new LoginRegisterDAO(factory);
 //        Account account = dao.getByEmail("mii.bootcamp29@gmail.com");
 //        EmployeeRoleDAO rdao = new EmployeeRoleDAO(factory);
@@ -84,9 +86,11 @@ public class Testing {
 //        show();
 //          IEmployeeController iec = new EmployeeController(factory);
 //          System.out.println(iec.save("2", "khrisna", "Khrisna", "accountgame607@gmail.com", "Klaten ", "2019-09-03", "Male", "WNI","image/default-image.png", false));
-        ILoginRegisterController ilrc = new LoginRegisterController(factory);
-        System.out.println(ilrc.updateByToken("9ekeZyz0NRfzQ9LkohXI", "Mustofa98"));
-        
+//        ILoginRegisterController ilrc = new LoginRegisterController(factory);
+//        System.out.println(ilrc.updateByToken("9ekeZyz0NRfzQ9LkohXI", "Mustofa98"));
+        System.out.println(factory);
+        IGeneralDAO<Education> igdao = new GeneralDAO<>(HibernateUtil.getSessionFactory(), Education.class);
+        System.out.println(igdao.getAll());
     }
     
 }

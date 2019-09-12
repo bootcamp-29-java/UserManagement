@@ -54,5 +54,26 @@ Contributor(s):
     <mapping class="models.EmployeeRole"/>
     <mapping class="models.Role"/>
     <mapping class="models.Status"/>
+    <mapping class="models.Award"/>
+    <mapping class="models.Category"/>
+    <mapping class="models.Certificate"/>
+    <mapping class="models.Certification"/>
+    <mapping class="models.Degree"/>
+    <mapping class="models.Education"/>
+    <mapping class="models.EducationHistory"/>
+    <mapping class="models.EmployeeLanguage"/>
+    <mapping class="models.EmployeeSkill"/>
+    <mapping class="models.Experience"/>
+    <mapping class="models.Institution"/>
+    <mapping class="models.Language"/>
+    <mapping class="models.Major"/>
+    <mapping class="models.Marital"/>
+    <mapping class="models.Organization"/>
+    <mapping class="models.Project"/>
+    <mapping class="models.Religion"/>
+    <mapping class="models.Skill"/>
+    <mapping class="models.Training"/>
+    <mapping class="models.University"/>
+    <mapping class="models.WorkAssignment"/>
   </session-factory>
 </hibernate-configuration>
